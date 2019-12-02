@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 // import './App.css';
+const id = '7b76b39a4660b1faa24d'
 
 export default class App extends Component {
 
   render() {
     return (
       <div>
-        <Link to="https://github.com/login/oauth/authorize?client_id=YOUR_CLIENT_ID">
           <button>
-            Login with github
+            <a href={`https://github.com/login/oauth/authorize?client_id=${id}`}>
+              Login with github
+            </a>
           </button>
-        </Link>
       </div>
     )
   }
