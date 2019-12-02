@@ -14,9 +14,7 @@ export default class Home extends Component {
         request
             .get('https://api.github.com/user')
             // .set('Authorization', `Bearer ${token}`)
-            // (this was from the medium article, AFAIK should use `Bearer token`):
             .set('Authorization', `token ${token}`) 
-            .then(res => res.json())
             .then(res => {
                 console.log(res)
                 // Once we get the response (which has many fields)
@@ -25,7 +23,7 @@ export default class Home extends Component {
                 // const nameNode = document.createTextNode(`Welcome, ${res.name}`)
                 // document.body.appendChild(nameNode)
                 this.setState({
-                    name: res.name
+                    name: res.body.login
                 })
         })
     }
