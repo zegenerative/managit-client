@@ -14,7 +14,7 @@ export default class App extends Component {
               Login with github
             </a>
           </button>
-      <Route exact path='/home' component={ Home }/>
+      <Route exact path={`/home.html`} component={ Home }/>
       </div>
     )
   }
