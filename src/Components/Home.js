@@ -9,9 +9,7 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-        // const query = window.location.search.substring(1)
         const query = queryString.parse(this.props.location.search)
-        // const token = query.split('access_token=')[1]
         const token = query.access_token
         if(query) {
             request
