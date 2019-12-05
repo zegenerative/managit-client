@@ -12,7 +12,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.location)
+    // console.log(this.props.location)
     // const query = queryString.parse(this.props.location.search)
     // console.log(query)
     // this.setState({
@@ -29,7 +29,8 @@ export default class App extends Component {
             Login with github
           </a>
         </button>
-        <Route exact path={`/home/?access_token=${this.state.query}`} component={ Home }/>
+        {/* <Route exact path={`/home/?access_token=${this.state.query}`} component={ Home }/> */}
+        <Route path={`/home`} component={ Home }/>
       </div>
     )
   }
