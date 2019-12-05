@@ -31,7 +31,7 @@ export default class App extends Component {
           </a>
         </button>
         <Route path='/' component={ Home }/>
-        <Route path='/home' component={ Home }/>
+        <Route path='/home/' component={ Home }/>
         <Route exact path={`/home?access_token=${this.state.token}`} component={ Home }/>
       </div>
     )
