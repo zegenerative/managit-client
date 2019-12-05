@@ -22,7 +22,7 @@ export default class Home extends Component {
                     this.setState({
                         name: res.body.login
                     })
-            })
+                })
         }
     }
 
