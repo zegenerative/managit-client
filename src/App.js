@@ -15,7 +15,7 @@ export default class App extends Component {
     const query = queryString.parse(this.props.location.search)
     console.log(query)
     this.setState({
-      query,
+      query: query.access_token
     })
   }
 
