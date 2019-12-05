@@ -9,12 +9,12 @@ export default class App extends Component {
   render() {
     return (
       <div>
-          <button>
-            <a href={`https://github.com/login/oauth/authorize?client_id=${id}`}>
-              Login with github
-            </a>
-          </button>
-      <Route path={`/home.html`} component={ Home }/>
+        <button>
+          <a href={`https://github.com/login/oauth/authorize?client_id=${id}`}>
+            Login with github
+          </a>
+        </button>
+        <Route path={`/home`} component={ Home }/>
       </div>
     )
   }
