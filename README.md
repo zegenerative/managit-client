@@ -1,3 +1,6 @@
+## Progress
+View the project progress here https://trello.com/b/5Jvtc4Me/managit
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
