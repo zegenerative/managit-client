@@ -12,11 +12,12 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    const query = queryString.parse(this.props.location.search)
-    console.log(query)
-    this.setState({
-      query: query.access_token
-    })
+    console.log(this.props.location)
+    // const query = queryString.parse(this.props.location.search)
+    // console.log(query)
+    // this.setState({
+    //   query: query.access_token
+    // })
   }
 
   render() {
