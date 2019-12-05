@@ -1,12 +1,26 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import Home from './Components/Home'
+import queryString from 'query-string'
 // import './App.css';
 const id = '7b76b39a4660b1faa24d'
 
 export default class App extends Component {
 
+  state = {
+    query: ''
+  }
+
+  componentDidMount() {
+    const query = queryString.parse(this.props.location.search)
+    console.log(query)
+    this.setState({
+      query,
+    })
+  }
+
   render() {
+
     return (
       <div>
         <button>
@@ -14,7 +28,7 @@ export default class App extends Component {
             Login with github
           </a>
         </button>
-        <Route exact path={`/home`} component={ Home }/>
+        <Route exact path={`/home/?access_token=${this.state.query}`} component={ Home }/>
       </div>
     )
   }
