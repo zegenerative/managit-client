@@ -31,7 +31,7 @@ export default class Home extends Component {
         } else {
             return (
                 <div>
-                    Loading...
+                    Please login
                 </div>
             )
         }

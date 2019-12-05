@@ -30,7 +30,7 @@ export default class App extends Component {
           </a>
         </button>
         {/* <Route exact path={`/home.html?access_token=${this.state.query}`} component={ Home }/> */}
-        <Route path={`/`} component={ Home }/>
+        <Route exact path={`/`} component={ Home }/>
       </div>
     )
   }
