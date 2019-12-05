@@ -29,8 +29,8 @@ export default class App extends Component {
             Login with github
           </a>
         </button>
-        {/* <Route exact path={`/home.html?access_token=${this.state.query}`} component={ Home }/> */}
-        <Route path={'/home'} component={ Home }/>
+        {/* <Route exact path={`/home?access_token=${this.state.query}`} component={ Home }/> */}
+        <Route path={'/'} component={ Home }/>
       </div>
     )
   }
