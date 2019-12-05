@@ -10,6 +10,7 @@ export default class Home extends Component {
     componentDidMount() {
         const query = window.location.search.substring(1)
         const token = query.split('access_token=')[1]
+        console.log('query:', query, 'token:', token)
         request
             .get('https://api.github.com/user')
             .set('Authorization', `token ${token}`) 
