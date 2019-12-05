@@ -7,19 +7,6 @@ const id = '7b76b39a4660b1faa24d'
 
 export default class App extends Component {
 
-  state = {
-    query: ''
-  }
-
-  componentDidMount() {
-    // console.log(this.props)
-    // const query = queryString.parse(this.props.location.search)
-    // console.log(query)
-    // this.setState({
-    //   query: query.access_token
-    // })
-  }
-
   render() {
 
     return (

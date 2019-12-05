@@ -14,14 +14,16 @@ export default class Home extends Component {
         // const token = query.split('access_token=')[1]
         const token = query.access_token
         console.log('query:', query, 'token:', token)
-        request
-            .get('https://api.github.com/user')
-            .set('Authorization', `token ${token}`) 
-            .then(res => {
-                this.setState({
-                    name: res.body.login
-                })
-        })
+        if(query) {
+            request
+                .get('https://api.github.com/user')
+                .set('Authorization', `token ${token}`) 
+                .then(res => {
+                    this.setState({
+                        name: res.body.login
+                    })
+            })
+        }
     }
 
     render() {
