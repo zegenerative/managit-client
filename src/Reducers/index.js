@@ -4,11 +4,13 @@ import login from './login'
 import name from './name'
 import repositories from './repositories'
 import repository from './repository'
+import commits from './commits'
 
 export default combineReducers({
     user,
     login,
     name,
     repository,
-    repositories
+    repositories,
+    commits
 })

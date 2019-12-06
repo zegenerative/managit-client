@@ -5,6 +5,7 @@ const gitUrl = 'https://api.github.com'
 export const ONE_REPOSITORY = 'ONE_REPOSITORY'
 export const ALL_REPOSITORIES = 'ALL_REPOSITORIES'
 export const NAME = 'NAME'
+export const COMMITS = 'COMMITS'
 
 const oneRepository = repository => ({
     type: ONE_REPOSITORY,
@@ -16,9 +17,13 @@ const allRepositories = repositories => ({
     payload: repositories
 })
 
+const commits = commits => ({
+    type: COMMITS,
+    payload: commits
+})
+
 export const searchRepository = (owner, name) => (dispatch) => {
-    const searchName = name.name
-    request(`${gitUrl}/repos/${owner}/${searchName}`)
+    request(`${gitUrl}/repos/${owner}/${name}`)
         .then(response => {
             const oneRepo = oneRepository(response.body)
             dispatch(oneRepo)
@@ -33,10 +38,18 @@ export const allRepos = (owner) => (dispatch, getState) => {
     if (!repositories.length) {
         request(`${gitUrl}/users/${owner}/repos`)
             .then(response => {
-                console.log('response of /users/user/repos', response.body)
                 const repositories = allRepositories(response.body)
                 dispatch(repositories)
         })
         .catch(console.error)
     }
+}
+
+export const searchCommits = (owner, name) => (dispatch) => {
+    request(`${gitUrl}/repos/${owner}/${name}/commits`)
+        .then(response => {
+            const allCommits = commits(response.body)
+            dispatch(allCommits)
+        })
+    .catch(console.error)
 }
