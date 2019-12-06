@@ -11,7 +11,7 @@ const allRepositories = repositories => ({
   payload: repositories
 })
 
-const name = name => ({
+const searchedName = name => ({
   type: NAME,
   payload: name
 })
@@ -20,11 +20,12 @@ export const loadRepositories = (name) => (dispatch, getState) => {
   const state = getState()
   const { repositories } = state
 
+  const searchName = JSON.stringify(name.name)
   if (!repositories.length) {
-    request(`${gitUrl}/search/repositories?q=${name}`)
+    request(`${gitUrl}/search/repositories?q=${searchName}`)
     .then(response => {
       const allRepos = allRepositories(response.body)
-      const nameSearch = name(name)
+      const nameSearch = searchedName(name)
       dispatch(allRepos)
       dispatch(nameSearch)
     })
