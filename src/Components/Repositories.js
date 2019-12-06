@@ -7,13 +7,11 @@ export default class Repositories extends Component {
 
     return (
       <div className="repositories-result">
-        <h4>Your Repositories</h4>
-        <h5>{repositories.length !== undefined && `You have ${repositories.length} repositories`}</h5>
-        <br />
+        <h4>{repositories.length !== undefined && `You have ${repositories.length} repositories:`}</h4>
         { repositories.map(repo => {
             return(
                 <div key={repo.id} id={repo.id} name={repo.name}>
-                    <h3>{repo.name}</h3>
+                    <h6>{repo.name}</h6>
                 </div>
             )
             })

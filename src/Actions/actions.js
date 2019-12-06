@@ -1,6 +1,5 @@
 import request from 'superagent'
 // const url = 'http://localhost:4000'
-const url = 'http://managit-server.herokuapp.com'
 const gitUrl = 'https://api.github.com'
 
 export const ONE_REPOSITORY = 'ONE_REPOSITORY'
@@ -17,26 +16,14 @@ const allRepositories = repositories => ({
     payload: repositories
 })
 
-const searchedName = name => ({
-    type: NAME,
-    payload: name
-})
-
-export const searchRepository = (owner, name) => (dispatch, getState) => {
-    const state = getState()
-    const { repositories } = state
-
+export const searchRepository = (owner, name) => (dispatch) => {
     const searchName = name.name
-    if (!repositories.length) {
-        request(`${gitUrl}/repos/${owner}/${searchName}`)
-            .then(response => {
-                const allRepos = oneRepository(response.body)
-                const nameSearch = searchedName(name)
-                dispatch(allRepos)
-                dispatch(nameSearch)
-            })
-            .catch(console.error)
-    }
+    request(`${gitUrl}/repos/${owner}/${searchName}`)
+        .then(response => {
+            const oneRepo = oneRepository(response.body)
+            dispatch(oneRepo)
+        })
+    .catch(console.error)
 }
 
 export const allRepos = (owner) => (dispatch, getState) => {
@@ -44,12 +31,12 @@ export const allRepos = (owner) => (dispatch, getState) => {
     const { repositories } = state
 
     if (!repositories.length) {
-      request(`${gitUrl}/users/${owner}/repos`)
-      .then(response => {
-          console.log('response of /users/user/repos', response.body)
-        const repositories = allRepositories(response.body)
-        dispatch(repositories)
-      })
-      .catch(console.error)
+        request(`${gitUrl}/users/${owner}/repos`)
+            .then(response => {
+                console.log('response of /users/user/repos', response.body)
+                const repositories = allRepositories(response.body)
+                dispatch(repositories)
+        })
+        .catch(console.error)
     }
 }
