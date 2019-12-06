@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import store from '../store'
 import RepositoriesContainer from './RepositoriesContainer'
 import SearchBarContainer from './SearchBarContainer'
+import SearchResult from './SearchResult'
 
 class Home extends Component {
 
@@ -36,6 +37,7 @@ class Home extends Component {
                 <div>
                     <h1>Welcome { this.props.name }</h1>
                     <SearchBarContainer />
+                    <SearchResult />
                     <RepositoriesContainer />
                 </div>
             )

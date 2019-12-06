@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom'
 
 export default class Repositories extends Component {
 
@@ -11,7 +12,7 @@ export default class Repositories extends Component {
         { repositories.map(repo => {
             return(
                 <div key={repo.id} id={repo.id} name={repo.name}>
-                    <h6>{repo.name}</h6>
+                    <Link to={`/repo/${repo.name}`}><h6>{ repo.name }</h6></Link>
                 </div>
             )
             })
