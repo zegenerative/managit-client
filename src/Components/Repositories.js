@@ -15,8 +15,7 @@ export default class Repositories extends Component {
                     <Link to={`/repo/${repo.name}`}><h6>{ repo.name }</h6></Link>
                 </div>
             )
-            })
-        }
+        })}
       </div>
     );
   }
