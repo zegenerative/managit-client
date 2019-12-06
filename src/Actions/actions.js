@@ -1,28 +1,10 @@
 import request from 'superagent'
 // const url = 'http://localhost:4000'
-const baseUrl = 'http://managit.netlify.com'
+const url = 'http://managit-server.herokuapp.com'
 const gitUrl = 'https://api.github.com'
 
-export const LOGIN = 'LOGIN'
 export const ALL_REPOSITORIES = 'ALL_REPOSITORIES'
 export const NAME = 'NAME'
-
-// function dispatchLogin (payload) {
-//     return {
-//         type: LOGIN,
-//         payload
-//     }
-// }
-
-// export const login = () => dispatch => {
-//   request
-//     .get(`${url}/home`)
-//     .then(response => {
-//         const action = dispatchLogin(response.body)
-//         dispatch(action)
-//     })
-//     .catch(console.error)
-// }
 
 const allRepositories = repositories => ({
   type: ALL_REPOSITORIES,
