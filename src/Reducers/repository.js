@@ -1,8 +1,8 @@
-import { ALL_REPOSITORIES } from '../Actions/actions'
+import { ONE_REPOSITORY } from '../Actions/actions'
 
 const reducer = (state = [], action) => {
   switch(action.type) {
-    case ALL_REPOSITORIES: {
+    case ONE_REPOSITORY: {
         return action.payload
     }
     default: 

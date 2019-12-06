@@ -9,9 +9,9 @@ export default class App extends Component {
   render() {
       return (
         <div>
+          <Login />
           {/* <Route path='/' component={ Home }/> */}
           <Route path='/home' component={ Home }/>
-          <Login />
         </div>
       )
     
