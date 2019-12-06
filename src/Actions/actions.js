@@ -1,24 +1,34 @@
 import request from 'superagent'
 // const url = 'http://localhost:4000'
-const url = 'http://managit.netlify.com'
+const url = 'http://managit-server.herokuapp.com'
+const gitUrl = 'https://api.github.com'
 
-// AUTHENTICATION RELATED ACTIONS
+export const ALL_REPOSITORIES = 'ALL_REPOSITORIES'
+export const NAME = 'NAME'
 
-export const LOGIN = 'LOGIN'
+const allRepositories = repositories => ({
+  type: ALL_REPOSITORIES,
+  payload: repositories
+})
 
-function dispatchLogin (payload) {
-    return {
-        type: LOGIN,
-        payload
-    }
-}
+const searchedName = name => ({
+  type: NAME,
+  payload: name
+})
 
-export const login = () => dispatch => {
-  request
-    .get(`${url}/home`)
+export const loadRepositories = (name) => (dispatch, getState) => {
+  const state = getState()
+  const { repositories } = state
+
+  const searchName = JSON.stringify(name.name)
+  if (!repositories.length) {
+    request(`${gitUrl}/search/repositories?q=${searchName}`)
     .then(response => {
-        const action = dispatchLogin(response.body)
-        dispatch(action)
+      const allRepos = allRepositories(response.body)
+      const nameSearch = searchedName(name)
+      dispatch(allRepos)
+      dispatch(nameSearch)
     })
     .catch(console.error)
+  }
 }
