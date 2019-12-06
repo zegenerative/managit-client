@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export default class RenderRepos extends Component {
+export default class Repositories extends Component {
 
   render() {
     const { repositories } = this.props;

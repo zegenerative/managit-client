@@ -1,17 +1,12 @@
 import React, { Component } from 'react'
-const id = '7b76b39a4660b1faa24d'
 
 export default class Login extends Component {
-    
-    componentDidMount() {
-
-    }
 
     render() {
         return (
             <div>
                 <button>
-                    <a href={`https://github.com/login/oauth/authorize?client_id=${id}`}>
+                    <a href={`https://github.com/login/oauth/authorize?client_id=7b76b39a4660b1faa24d`}>
                         Login with github
                     </a>
                 </button>

@@ -3,6 +3,7 @@ import request from 'superagent'
 import queryString from 'query-string'
 import { connect } from 'react-redux'
 import store from '../store'
+import RepositoriesContainer from './RepositoriesContainer'
 
 class Home extends Component {
 
@@ -34,6 +35,7 @@ class Home extends Component {
             return (
                 <div>
                     Welcome { this.props.name }
+                    <RepositoriesContainer />
                 </div>
             )
         } else {

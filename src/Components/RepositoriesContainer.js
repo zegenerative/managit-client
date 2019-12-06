@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Repositories from './Repositories';
+import Repositories from './Repositories.js';
 
 class RepositoriesContainer extends Component {
 
   render() {
     return (
-    <RepositoriesContainer
+    <Repositories
         repositories={this.props.repositories}
     />
     )
