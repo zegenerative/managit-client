@@ -11,10 +11,10 @@ export default class App extends Component {
   render() {
       return (
         <Provider store={store}>
-            <Route path='/' component={ Home }/>
-            <Route path='/home/' component={ Home }/>
-            <Route exact path={`/home?access_token=${this.state.token}`} component={ Home }/>
-            <Login />
+          <Route path='/' component={ Home }/>
+          <Route path='/home/' component={ Home }/>
+          <Route exact path={`/home?access_token=${this.state.token}`} component={ Home }/>
+          <Login />
         </Provider>
       )
     
