@@ -16,13 +16,14 @@ const searchedName = name => ({
   payload: name
 })
 
-export const loadRepositories = (name) => (dispatch, getState) => {
+export const loadRepositories = (owner, name) => (dispatch, getState) => {
   const state = getState()
   const { repositories } = state
 
-  const searchName = JSON.stringify(name.name)
+  const searchName = name.name
   if (!repositories.length) {
-    request(`${gitUrl}/search/repositories?q=${searchName}`)
+    // request(`${gitUrl}/search/repositories?q=${searchName}`)
+    request(`${gitUrl}/repos/${owner}/${searchName}`)
     .then(response => {
       const allRepos = allRepositories(response.body)
       const nameSearch = searchedName(name)
