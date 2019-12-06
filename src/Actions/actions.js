@@ -13,10 +13,9 @@ function dispatchLogin (payload) {
     }
 }
 
-export const login = (username, email, password) => dispatch => {
+export const login = () => dispatch => {
   request
-    .post(`${url}/login`)
-    .send({username, email, password})
+    .get(`${url}/home`)
     .then(response => {
         const action = dispatchLogin(response.body)
         dispatch(action)
