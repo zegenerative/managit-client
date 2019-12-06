@@ -4,14 +4,20 @@ export default class Repositories extends Component {
 
   render() {
     const { repositories } = this.props;
-    const searchedItems = repositories.items
-
 
     return (
       <div className="repositories-result">
-        <h4>Repositories</h4>
-        <h5>{repositories.total_count !== undefined && `You found ${repositories.total_count} repositories`}</h5>
+        <h4>Your Repositories</h4>
+        <h5>{repositories.length !== undefined && `You have ${repositories.length} repositories`}</h5>
         <br />
+        { repositories.map(repo => {
+            return(
+                <div key={repo.id} id={repo.id} name={repo.name}>
+                    <h3>{repo.name}</h3>
+                </div>
+            )
+            })
+        }
       </div>
     );
   }

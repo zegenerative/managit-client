@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadRepositories } from '../Actions/actions';
+import { searchRepository } from '../Actions/actions';
 import SearchBar from './SearchBar'
 
 class SearchBarContainer extends Component {
@@ -17,7 +17,7 @@ class SearchBarContainer extends Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    this.props.loadRepositories(this.props.user, this.state)
+    this.props.searchRepository(this.props.user, this.state)
     this.setState({
       name: ''
     })
@@ -40,4 +40,4 @@ const mapStateToProps = state => ({
   user: state.user
 })
 
-export default connect(mapStateToProps, { loadRepositories })(SearchBarContainer)
+export default connect(mapStateToProps, { searchRepository })(SearchBarContainer)
