@@ -17,7 +17,7 @@ class SearchBarContainer extends Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    this.props.loadRepositories(this.state)
+    this.props.loadRepositories(this.props.user, this.state)
     this.setState({
       name: ''
     })
@@ -36,7 +36,8 @@ class SearchBarContainer extends Component {
 
 const mapStateToProps = state => ({
   repositories: state.repositories,
-  name: state.name
+  name: state.name,
+  user: state.user
 })
 
 export default connect(mapStateToProps, { loadRepositories })(SearchBarContainer)

@@ -21,7 +21,6 @@ class Home extends Component {
                 .get('https://api.github.com/user')
                 .set('Authorization', `token ${token}`) 
                 .then(res => {
-                    // dispatchUser(res.body.login)
                     store.dispatch({
                         type: 'USER',
                         payload: res.body.login
@@ -35,7 +34,7 @@ class Home extends Component {
         if(this.props.name !== '') {
             return (
                 <div>
-                    Welcome { this.props.name }
+                    <h1>Welcome { this.props.name }</h1>
                     <SearchBarContainer />
                     <RepositoriesContainer />
                 </div>
