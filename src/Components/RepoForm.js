@@ -25,6 +25,22 @@ export default function RepoForm(props) {
                             placeholder='description'
                         />
                     </label>
+                    {/* <label>Private:
+                        Yes
+                        <input 
+                            type="radio" 
+                            onChange={onChange}
+                            value={ values.private }
+                            name='private'
+                        />
+                        No
+                        <input 
+                            type="radio" 
+                            onChange={onChange}
+                            value={ values.private }
+                            name='private'
+                        />
+                    </label> */}
                     <input type="submit" value="create"/>
                 </form>
             </div>

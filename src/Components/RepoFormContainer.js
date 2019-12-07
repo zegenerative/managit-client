@@ -23,7 +23,7 @@ class RepoFormContainer extends React.Component {
     event.preventDefault()
     this.setState({
         name: '',
-        description: ''
+        description: '',
     })
     this.props.createRepo(this.state)
     this.redirect = true

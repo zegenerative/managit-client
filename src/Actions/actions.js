@@ -79,7 +79,6 @@ export const createRepo = (repo) => (dispatch, getState) => {
     const state = getState()
     const { login, user } = state
     const token = login
-    console.log(token)
 
     request
         // .post(`${gitUrl}/users/${user}/repos`)
@@ -87,7 +86,8 @@ export const createRepo = (repo) => (dispatch, getState) => {
         // .post(`${gitUrl}/${user}/repos`)
         .post(`${gitUrl}/user/repos`)   
         .set('Authorization', `token ${token}`) 
-        .set('Accept', 'application/json') 
+        // .set('Accept', 'application/json') 
+        .set('Content-Type', 'application/json')
         .send(repo)
         .then(response => {
             console.log(response.body)
