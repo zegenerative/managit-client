@@ -7,9 +7,15 @@ export const NAME = 'NAME'
 export const COMMITS = 'COMMITS'
 export const BRANCHES = 'BRANCHES'
 export const NEW_REPO = 'NEW_REPO'
+export const DELETE_REPO = 'DELETE_REPO'
 
 const oneRepository = repository => ({
     type: ONE_REPOSITORY,
+    payload: repository
+})
+
+const deleteRepository = repository => ({
+    type: DELETE_REPO,
     payload: repository
 })
 
@@ -50,6 +56,7 @@ export const allRepos = (owner) => (dispatch, getState) => {
     if (!repositories.length) {
         request(`${gitUrl}/users/${owner}/repos`)
             .then(response => {
+                console.log(response.body)
                 const repositories = allRepositories(response.body)
                 dispatch(repositories)
         })
@@ -81,18 +88,30 @@ export const createRepo = (repo) => (dispatch, getState) => {
     const token = login
 
     request
-        // .post(`${gitUrl}/users/${user}/repos`)
-        // .post(`${gitUrl}/repos/${user}`)
-        // .post(`${gitUrl}/${user}/repos`)
         .post(`${gitUrl}/user/repos`)   
         .set('Authorization', `token ${token}`) 
-        // .set('Accept', 'application/json') 
         .set('Content-Type', 'application/json')
         .send(repo)
         .then(response => {
-            console.log(response.body)
             const newRepo = createRepository(response.body)
             dispatch(newRepo)
+        })
+    .catch(console.error)
+}
+
+export const deleteRepo = (repo) => (dispatch, getState) => {
+    const state = getState()
+    const { user, login } = state
+    const token = login
+
+    request
+        .delete(`${gitUrl}/repos/${user}/${repo.name}`)
+        .set('Authorization', `token ${token}`) 
+        .then(response => {
+            console.log(response.status, 'deleted repo')
+            const deletedRepo = deleteRepository(repo.name)
+            console.log(deletedRepo)
+            dispatch(deletedRepo)
         })
     .catch(console.error)
 }

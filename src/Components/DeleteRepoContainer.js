@@ -1,14 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { createRepo } from '../Actions/actions'
-import RepoForm from './RepoForm'
+import { deleteRepo, allRepos } from '../Actions/actions'
+import DeleteRepo from './DeleteRepo'
 import Grid from '@material-ui/core/Grid'
 
-class RepoFormContainer extends React.Component {
+class DeleteRepoContainer extends React.Component {
 
   state = { 
     name: '',
-    description: ''
   }
 
   onChange = (event) => {
@@ -17,13 +16,13 @@ class RepoFormContainer extends React.Component {
     })
   }
 
-  onSubmit = (event) => {
+  onSubmit = async (event) => {
     event.preventDefault()
     this.setState({
-        name: '',
-        description: '',
+        name: ''
     })
-    this.props.createRepo(this.state)
+    await this.props.deleteRepo(this.state)
+    this.props.allRepos(this.props.user)
   }
 
   render() {
@@ -35,7 +34,7 @@ class RepoFormContainer extends React.Component {
                     justify="center"
                     alignItems="center"
                 >
-                <RepoForm
+                <DeleteRepo
                     onSubmit={this.onSubmit}
                     onChange={this.onChange}
                     values={this.state}
@@ -53,4 +52,4 @@ function mapStateToProps (state) {
     }
 }
 
-export default connect(mapStateToProps, { createRepo })(RepoFormContainer)
+export default connect(mapStateToProps, { deleteRepo, allRepos })(DeleteRepoContainer)

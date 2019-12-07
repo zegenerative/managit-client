@@ -1,4 +1,4 @@
-import { ALL_REPOSITORIES, NEW_REPO } from '../Actions/actions'
+import { ALL_REPOSITORIES, NEW_REPO, DELETE_REPO } from '../Actions/actions'
 
 const reducer = (state = [], action) => {
   switch(action.type) {
@@ -7,6 +7,9 @@ const reducer = (state = [], action) => {
     }
     case NEW_REPO: {
         return [ ...state, action.payload ]
+    }
+    case DELETE_REPO: {
+        return state.filter(item => item.name !== action.payload)
     }
     default: 
         return state
