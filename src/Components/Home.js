@@ -6,6 +6,7 @@ import store from '../store'
 import RepositoriesContainer from './RepositoriesContainer'
 import SearchBarContainer from './SearchBarContainer'
 import SearchResult from './SearchResult'
+import RepoFormContainer from './RepoFormContainer'
 
 class Home extends Component {
 
@@ -38,6 +39,7 @@ class Home extends Component {
                     <h1>Welcome { this.props.name }</h1>
                     <SearchBarContainer />
                     <SearchResult />
+                    <RepoFormContainer />
                     <RepositoriesContainer />
                 </div>
             )
