@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { searchRepository } from '../Actions/actions'
 import { searchCommits } from '../Actions/actions'
+import { searchBranches } from '../Actions/actions'
 import RepositoryDetails from './RepositoryDetails'
 
 class RepositoryDetailsContainer extends Component {
@@ -13,6 +14,7 @@ class RepositoryDetailsContainer extends Component {
     componentDidMount() {
         this.props.searchRepository(this.props.user, this.state.name)
         this.props.searchCommits(this.props.user, this.state.name)
+        this.props.searchBranches(this.props.user, this.state.name)
     }
 
     render() {
@@ -20,6 +22,7 @@ class RepositoryDetailsContainer extends Component {
             <RepositoryDetails 
                 repository={this.props.repository}
                 commits={this.props.commits}
+                branches={this.props.branches}
             />
         )
     }
@@ -28,7 +31,8 @@ class RepositoryDetailsContainer extends Component {
 const mapStateToProps = state => ({
     repository: state.repository,
     user: state.user,
-    commits: state.commits
+    commits: state.commits,
+    branches: state.branches
 })
 
-export default connect(mapStateToProps, { searchRepository, searchCommits })(RepositoryDetailsContainer)
+export default connect(mapStateToProps, { searchRepository, searchCommits, searchBranches })(RepositoryDetailsContainer)

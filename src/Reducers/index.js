@@ -5,6 +5,7 @@ import name from './name'
 import repositories from './repositories'
 import repository from './repository'
 import commits from './commits'
+import branches from './branches'
 
 export default combineReducers({
     user,
@@ -12,5 +13,6 @@ export default combineReducers({
     name,
     repository,
     repositories,
-    commits
+    commits,
+    branches
 })
