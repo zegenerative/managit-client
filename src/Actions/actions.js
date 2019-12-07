@@ -1,11 +1,11 @@
 import request from 'superagent'
-// const url = 'http://localhost:4000'
 const gitUrl = 'https://api.github.com'
 
 export const ONE_REPOSITORY = 'ONE_REPOSITORY'
 export const ALL_REPOSITORIES = 'ALL_REPOSITORIES'
 export const NAME = 'NAME'
 export const COMMITS = 'COMMITS'
+export const BRANCHES = 'BRANCHES'
 
 const oneRepository = repository => ({
     type: ONE_REPOSITORY,
@@ -22,9 +22,15 @@ const commits = commits => ({
     payload: commits
 })
 
+const branches = branches => ({
+    type: BRANCHES,
+    payload: branches
+})
+
 export const searchRepository = (owner, name) => (dispatch) => {
     request(`${gitUrl}/repos/${owner}/${name}`)
         .then(response => {
+            console.log(response.body)
             const oneRepo = oneRepository(response.body)
             dispatch(oneRepo)
         })
@@ -50,6 +56,15 @@ export const searchCommits = (owner, name) => (dispatch) => {
         .then(response => {
             const allCommits = commits(response.body)
             dispatch(allCommits)
+        })
+    .catch(console.error)
+}
+
+export const searchBranches = (owner, name) => (dispatch) => {
+    request(`${gitUrl}/repos/${owner}/${name}/branches`)
+        .then(response => {
+            const allBranches = branches(response.body)
+            dispatch(allBranches)
         })
     .catch(console.error)
 }
