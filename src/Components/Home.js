@@ -7,6 +7,7 @@ import RepositoriesContainer from './RepositoriesContainer'
 import SearchBarContainer from './SearchBarContainer'
 import SearchResult from './SearchResult'
 import RepoFormContainer from './RepoFormContainer'
+import DeleteRepoContainer from './DeleteRepoContainer'
 
 class Home extends Component {
 
@@ -40,6 +41,7 @@ class Home extends Component {
                     <SearchBarContainer />
                     <SearchResult />
                     <RepoFormContainer />
+                    <DeleteRepoContainer />
                     <RepositoriesContainer />
                 </div>
             )
