@@ -56,7 +56,6 @@ export const allRepos = (owner) => (dispatch, getState) => {
     if (!repositories.length) {
         request(`${gitUrl}/users/${owner}/repos`)
             .then(response => {
-                console.log(response.body)
                 const repositories = allRepositories(response.body)
                 dispatch(repositories)
         })
@@ -84,7 +83,7 @@ export const searchBranches = (owner, name) => (dispatch) => {
 
 export const createRepo = (repo) => (dispatch, getState) => {
     const state = getState()
-    const { login, user } = state
+    const { login } = state
     const token = login
 
     request
@@ -108,9 +107,8 @@ export const deleteRepo = (repo) => (dispatch, getState) => {
         .delete(`${gitUrl}/repos/${user}/${repo.name}`)
         .set('Authorization', `token ${token}`) 
         .then(response => {
-            console.log(response.status, 'deleted repo')
+            console.log(response.status, 'repo deleted')
             const deletedRepo = deleteRepository(repo.name)
-            console.log(deletedRepo)
             dispatch(deletedRepo)
         })
     .catch(console.error)
