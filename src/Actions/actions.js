@@ -6,6 +6,7 @@ export const ALL_REPOSITORIES = 'ALL_REPOSITORIES'
 export const NAME = 'NAME'
 export const COMMITS = 'COMMITS'
 export const BRANCHES = 'BRANCHES'
+export const NEW_REPO = 'NEW_REPO'
 
 const oneRepository = repository => ({
     type: ONE_REPOSITORY,
@@ -15,6 +16,11 @@ const oneRepository = repository => ({
 const allRepositories = repositories => ({
     type: ALL_REPOSITORIES,
     payload: repositories
+})
+
+const createRepository = repository => ({
+    type: NEW_REPO,
+    payload: repository
 })
 
 const commits = commits => ({
@@ -65,6 +71,28 @@ export const searchBranches = (owner, name) => (dispatch) => {
         .then(response => {
             const allBranches = branches(response.body)
             dispatch(allBranches)
+        })
+    .catch(console.error)
+}
+
+export const createRepo = (repo) => (dispatch, getState) => {
+    const state = getState()
+    const { login, user } = state
+    const token = login
+    console.log(token)
+
+    request
+        // .post(`${gitUrl}/users/${user}/repos`)
+        // .post(`${gitUrl}/repos/${user}`)
+        // .post(`${gitUrl}/${user}/repos`)
+        .post(`${gitUrl}/user/repos`)   
+        .set('Authorization', `token ${token}`) 
+        .set('Accept', 'application/json') 
+        .send(repo)
+        .then(response => {
+            console.log(response.body)
+            const newRepo = createRepository(response.body)
+            dispatch(newRepo)
         })
     .catch(console.error)
 }

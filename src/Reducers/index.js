@@ -14,5 +14,5 @@ export default combineReducers({
     repository,
     repositories,
     commits,
-    branches
+    branches,
 })
