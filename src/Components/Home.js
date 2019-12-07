@@ -27,7 +27,7 @@ class Home extends Component {
                         payload: res.body.login
                     })
                 })
-                .catch(err => console(err))
+                .catch(err => console.log(err))
         }
     }
 
