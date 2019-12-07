@@ -1,37 +1,42 @@
 import React, { Component } from 'react'
 import request from 'superagent'
 import { connect } from 'react-redux'
-// const authorization_id = 1
+import { Redirect } from 'react-router-dom'
+const authorization_id = 1
 
 class Logout extends Component {
 
-    handleClick = () => {
-        request
-            .get(`https://api.github.com/authorizations`)
+    state = {
+        logout: ''
+    }
+
+    handleClick = async () => {
+        const logout = await request
+            .delete(`https://api.github.com/authorizations/${authorization_id}`)
             .set('Authorization', `token ${this.props.token}`) 
             .set('UserAgent', 'Managit')
-            .set('Accept', 'application/json')
             .then(res => {
-                console.log('logged out:', res)
+                console.log('response from delete request:', res)
+                return res
             })
-            .catch(err => console.log(err))
-        // request
-        //     .delete(`https://api.github.com/authorizations/${authorization_id}`)
-        //     .set('Authorization', `token ${this.props.token}`) 
-        //     .set('UserAgent', 'Managit')
-        //     .then(res => {
-        //         console.log('logged out:', res)
-        //     })
-        //     .catch(err => console.log(err))
+            .catch(err => console.log(err)) 
+        this.setState({
+            logout, 
+        })
     }
 
     render() {
+        if(this.state.logout) {
+            return (
+                <Redirect to='https://github.com/logout' />
+            )
+        } 
         return (
             <div>
                 <button onClick={this.handleClick}>
-                    {/* <a href={`https://github.com/logout`}> */}
+                    <a href={`https://github.com/logout`}>
                         Logout
-                    {/* </a> */}
+                    </a>
                 </button>
             </div>
         )
