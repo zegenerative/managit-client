@@ -42,7 +42,6 @@ const branches = branches => ({
 export const searchRepository = (owner, name) => (dispatch) => {
     request(`${gitUrl}/repos/${owner}/${name}`)
         .then(response => {
-            console.log(response.body)
             const oneRepo = oneRepository(response.body)
             dispatch(oneRepo)
         })

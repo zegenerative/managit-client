@@ -6,7 +6,7 @@ const reducer = (state = [], action) => {
         return action.payload
     }
     case NEW_REPO: {
-        return [ ...state, action.payload ]
+        return [ action.payload, ...state ]
     }
     case DELETE_REPO: {
         return state.filter(item => item.name !== action.payload)

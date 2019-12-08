@@ -11,13 +11,13 @@ class Logout extends Component {
     }
 
     handleClick = async () => {
+        console.log(this.props.token)
         const logout = await request
             .delete(`https://api.github.com/authorizations/${authorization_id}`)
-            .set('Authorization', `token ${this.props.token}`) 
-            .set('UserAgent', 'Managit')
+            .set('Authorization', `token ${this.props.token}`)  
             .then(res => {
                 console.log('response from delete request:', res)
-                return res
+                // return res
             })
             .catch(err => console.log(err)) 
         this.setState({
@@ -34,9 +34,9 @@ class Logout extends Component {
         return (
             <div>
                 <button onClick={this.handleClick}>
-                    <a href={`https://github.com/logout`}>
+                    {/* <a href={`https://github.com/logout`}> */}
                         Logout
-                    </a>
+                    {/* </a> */}
                 </button>
             </div>
         )
