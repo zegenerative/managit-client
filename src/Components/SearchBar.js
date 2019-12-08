@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 export default function SearchBar(props) {
   const { onSubmit, onChange, values } = props;
@@ -13,7 +13,7 @@ export default function SearchBar(props) {
             name="name"
             onChange={onChange}
             value={values.name}
-            placeholder="repositories"
+            placeholder="repo name"
           />
         </label>
         <input type="submit" value="go!"/>

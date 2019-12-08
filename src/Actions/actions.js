@@ -2,6 +2,7 @@ import request from 'superagent'
 const gitUrl = 'https://api.github.com'
 
 export const ONE_REPOSITORY = 'ONE_REPOSITORY'
+export const SEARCH_REPOSITORY = 'SEARCH_REPOSITORY'
 export const ALL_REPOSITORIES = 'ALL_REPOSITORIES'
 export const NAME = 'NAME'
 export const COMMITS = 'COMMITS'
@@ -11,6 +12,11 @@ export const DELETE_REPO = 'DELETE_REPO'
 
 const oneRepository = repository => ({
     type: ONE_REPOSITORY,
+    payload: repository
+})
+
+const searchRepo = repository => ({
+    type: SEARCH_REPOSITORY,
     payload: repository
 })
 
@@ -40,6 +46,15 @@ const branches = branches => ({
 })
 
 export const searchRepository = (owner, name) => (dispatch) => {
+    request(`${gitUrl}/repos/${owner}/${name}`)
+        .then(response => {
+            const searchedRepo = searchRepo(response.body)
+            dispatch(searchedRepo)
+        })
+    .catch(console.error)
+}
+
+export const oneRepo = (owner, name) => (dispatch) => {
     request(`${gitUrl}/repos/${owner}/${name}`)
         .then(response => {
             const oneRepo = oneRepository(response.body)

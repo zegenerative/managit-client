@@ -12,7 +12,7 @@ export default function RepoForm(props) {
                         onChange={onChange}
                         value={values.name}
                         name='name'
-                        placeholder='name'
+                        placeholder='repo name'
                     />
                     <input 
                         type="text" 

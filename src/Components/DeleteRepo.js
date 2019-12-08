@@ -12,7 +12,7 @@ export default function DeleteRepo(props) {
                         onChange={onChange}
                         value={values.name}
                         name='name'
-                        placeholder='name'
+                        placeholder='repo name'
                     />
                     <input type="submit" value="delete"/>
                 </form>

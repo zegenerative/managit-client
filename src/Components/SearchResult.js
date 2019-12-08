@@ -4,15 +4,11 @@ import { Link } from 'react-router-dom'
 
 class SearchResult extends Component {
 
-    componentDidMount() {
-
-    }
-
     render() {
         if(this.props.repository) {
             return (
                 <div>
-                    <Link to={`/repo/${this.props.repository.name}`}><h5>{ this.props.repository.name }</h5></Link>
+                    <Link to={`/repo/${this.props.repository.name}`}><h2>{ this.props.repository.name }</h2></Link>
                 </div>
             )
         }
@@ -20,7 +16,7 @@ class SearchResult extends Component {
 }
 
 const mapStateToProps = state => ({
-    repository: state.repository,
+    repository: state.searchrepo,
 })
 
 export default connect(mapStateToProps)(SearchResult)
