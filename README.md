@@ -3,7 +3,7 @@
 ## What this project is about
 Managit enables a user to manage their github repositories via OAuth.
 
-![](howtogif.gif)
+![](howto.gif)
 
 - **[Client](https://github.com/zegenerative/managit-client)**
   The frontend part of the app.
