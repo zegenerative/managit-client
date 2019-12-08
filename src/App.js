@@ -6,8 +6,7 @@ import Login from './Components/Login'
 import RepositoryDetailsContainer from './Components/RepositoryDetailsContainer'
 import Logout from './Components/Logout'
 import Grid from '@material-ui/core/Grid'
-
-// import './App.css';
+import './App.css'
 
 class App extends Component {
 

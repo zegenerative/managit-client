@@ -3,6 +3,7 @@ import request from 'superagent'
 import queryString from 'query-string'
 import { connect } from 'react-redux'
 import store from '../store'
+import logo from '../Assets/managit.png'
 import RepositoriesContainer from './RepositoriesContainer'
 import SearchBarContainer from './SearchBarContainer'
 import SearchResult from './SearchResult'
@@ -45,6 +46,7 @@ class Home extends Component {
                         justify="center"
                         alignItems="center"
                     >
+                    <img src={logo} alt='logo' width='5%'></img>
                     <h1>Welcome { this.props.name }</h1>
                     </Grid>
                     <Grid
