@@ -12,7 +12,7 @@ export default class Repositories extends Component {
         { repositories.map(repo => {
             return(
                 <div key={repo.id} id={repo.id} name={repo.name}>
-                    <Link to={`/repo/${repo.name}`}><h6>{ repo.name }</h6></Link>
+                    <Link to={`/repo/${repo.name}`}><h3>{ repo.name }</h3></Link>
                 </div>
             )
         })}

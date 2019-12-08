@@ -5,7 +5,7 @@ export default function SearchBar(props) {
 
   return (
     <div className="search-bar">
-      <h4>Search for a repository</h4>
+      <h3>Search for a repository</h3>
       <form onSubmit={onSubmit}>
         <label>
           <input

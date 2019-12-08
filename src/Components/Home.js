@@ -9,6 +9,7 @@ import SearchResult from './SearchResult'
 import RepoFormContainer from './RepoFormContainer'
 import DeleteRepoContainer from './DeleteRepoContainer'
 import Grid from '@material-ui/core/Grid'
+import { Box } from '@material-ui/core'
 
 class Home extends Component {
 
@@ -38,12 +39,46 @@ class Home extends Component {
         if(this.props.name !== '') {
             return (
                 <div>
+                    <Grid
+                        container
+                        direction="column"
+                        justify="center"
+                        alignItems="center"
+                    >
                     <h1>Welcome { this.props.name }</h1>
-                    <SearchBarContainer />
+                    </Grid>
+                    <Grid
+                        container
+                        direction="row"
+                        justify="center"
+                        p={10}
+                        // alignItems="center"
+                    >
+                    <Box 
+                        m={3}
+                    >
+                        <SearchBarContainer />
+                    </Box>
+                    <Box 
+                        m={3}
+                    >
+                        <RepoFormContainer />
+                    </Box>
+                    <Box 
+                        m={3}
+                    >
+                        <DeleteRepoContainer />
+                    </Box>
+                    </Grid>
+                    <Grid
+                        container
+                        direction="column"
+                        justify="center"
+                        alignItems="center"
+                    >
                     <SearchResult />
-                    <RepoFormContainer />
-                    <DeleteRepoContainer />
                     <RepositoriesContainer />
+                    </Grid>
                 </div>
             )
         } else {

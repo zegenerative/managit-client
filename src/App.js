@@ -21,9 +21,9 @@ class App extends Component {
             alignItems="center"
           > 
             { this.props.user? <Logout /> : <Login /> }
-            <Route path='/home' component={ Home }/>
-            <Route path="/repo/:repo" component={ RepositoryDetailsContainer } />
           </Grid>
+          <Route path='/home' component={ Home }/>
+          <Route path="/repo/:repo" component={ RepositoryDetailsContainer } />
         </div>
       )
   }

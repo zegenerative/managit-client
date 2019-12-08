@@ -29,18 +29,11 @@ class RepoFormContainer extends React.Component {
   render() {
         return (
             <div>
-                <Grid
-                    container
-                    direction="column"
-                    justify="center"
-                    alignItems="center"
-                >
                 <RepoForm
                     onSubmit={this.onSubmit}
                     onChange={this.onChange}
                     values={this.state}
                 />
-                </Grid>
             </div>
         )
     }

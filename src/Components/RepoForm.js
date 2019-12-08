@@ -5,26 +5,22 @@ export default function RepoForm(props) {
     const { onChange, onSubmit, values } = props
 
     return( <div>
-                <h3>Create a repository:</h3>
+                <h3>Create a repository</h3>
                 <form onSubmit={onSubmit}> 
-                    <label>Name:
-                        <input 
-                            type="text" 
-                            onChange={onChange}
-                            value={values.name}
-                            name='name'
-                            placeholder='name'
-                        />
-                    </label>
-                    <label>Description:
-                        <input 
-                            type="text" 
-                            onChange={onChange}
-                            value={values.description}
-                            name='description'
-                            placeholder='description'
-                        />
-                    </label>
+                    <input 
+                        type="text" 
+                        onChange={onChange}
+                        value={values.name}
+                        name='name'
+                        placeholder='name'
+                    />
+                    <input 
+                        type="text" 
+                        onChange={onChange}
+                        value={values.description}
+                        name='description'
+                        placeholder='description (optional)'
+                    />
                     {/* <label>Private:
                         Yes
                         <input 
