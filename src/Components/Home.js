@@ -8,6 +8,7 @@ import SearchBarContainer from './SearchBarContainer'
 import SearchResult from './SearchResult'
 import RepoFormContainer from './RepoFormContainer'
 import DeleteRepoContainer from './DeleteRepoContainer'
+import Grid from '@material-ui/core/Grid'
 
 class Home extends Component {
 

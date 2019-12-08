@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { allRepos } from '../Actions/actions'
-import { connect } from 'react-redux';
-import Repositories from './Repositories.js';
+import { connect } from 'react-redux'
+import Repositories from './Repositories.js'
+import Grid from '@material-ui/core/Grid'
 
 class RepositoriesContainer extends Component {
 

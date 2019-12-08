@@ -4,6 +4,7 @@ import { searchRepository } from '../Actions/actions'
 import { searchCommits } from '../Actions/actions'
 import { searchBranches } from '../Actions/actions'
 import RepositoryDetails from './RepositoryDetails'
+import Grid from '@material-ui/core/Grid'
 
 class RepositoryDetailsContainer extends Component {
 
