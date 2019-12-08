@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { searchRepository } from '../Actions/actions';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { searchRepository } from '../Actions/actions'
 import SearchBar from './SearchBar'
+import Grid from '@material-ui/core/Grid'
 
 class SearchBarContainer extends Component {
 

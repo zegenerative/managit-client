@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import request from 'superagent'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
 const authorization_id = 1
 
 class Logout extends Component {
@@ -11,13 +12,12 @@ class Logout extends Component {
     }
 
     handleClick = async () => {
-        console.log(this.props.token)
         const logout = await request
             .delete(`https://api.github.com/authorizations/${authorization_id}`)
             .set('Authorization', `token ${this.props.token}`)  
             .then(res => {
                 console.log('response from delete request:', res)
-                // return res
+                return res
             })
             .catch(err => console.log(err)) 
         this.setState({
@@ -33,11 +33,15 @@ class Logout extends Component {
         } 
         return (
             <div>
-                <button onClick={this.handleClick}>
-                    {/* <a href={`https://github.com/logout`}> */}
+                <Button 
+                    variant="contained" 
+                    color="primary"
+                    onClick={this.handleClick}
+                >
+                    <a href={`https://github.com/logout`}>
                         Logout
-                    {/* </a> */}
-                </button>
+                    </a>
+                </Button>
             </div>
         )
     }
